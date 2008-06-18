@@ -36,7 +36,7 @@ LDCONFIG = /sbin/ldconfig
 CFLAGS  = -O2 -g
 
 # Debug versions...
-WARNS = -W -Wall -Wundef -Wshadow -Wpointer-arith -Wbad-function-cast -Wcast-align -Wwrite-strings -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Wno-format-zero-length -Wformat-nonliteral -Wformat-security # -Wfloat-equal -- no floats
+WARNS = -W -Wall -Wundef -Wshadow -Wpointer-arith -Wbad-function-cast -Wcast-align -Wwrite-strings -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Wno-format-zero-length -Wformat-nonliteral -Wformat-security # -Wunreachable-code -Wfloat-equal -- no floats
 #  Fedora policies/"reviewers" are completely retarded and refuse to allow
 # lowering the "Fedora build flags" even when it activley hurts their users,
 # this makes it easier for them to hurt you. Welcome to the lowest common
@@ -95,6 +95,8 @@ TST_STATIC_ALL =  tst_0_sizes  tst_0_manual   \
           otst_0_sizes otst_0_manual \
            tst_0_nothing \
           otst_0_nothing \
+           tst_0_core \
+          otst_0_core \
            tst_1_basic \
           otst_1_basic \
            tst_2_small \
