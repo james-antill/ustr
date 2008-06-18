@@ -35,6 +35,8 @@ examples/basename
 examples/basename-s
 examples/dirname
 examples/dirname-s
+examples/utf8_stats
+examples/utf8_stats-s
 abcd
 T-installed/tst_*_norm
 T-installed/tst_*_dbg1
