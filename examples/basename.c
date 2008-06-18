@@ -10,17 +10,6 @@ static void die(const char *prog_name, const char *msg)
   exit (EXIT_FAILURE);
 }
 
-/* 1.0.3 is buggy */
-size_t u_cspn_chr_rev(const struct Ustr *s1, size_t off, char chr)
-{
-  size_t f_pos = ustr_srch_chr_rev(s1, off, chr);
-
-  if (!f_pos)
-    return (ustr_len(s1) - off);
-    
-  return ((ustr_len(s1) - f_pos) - off);
-}
-
 static int u_basename(struct Ustr **ps1)
 {
   size_t off  = 0;
@@ -34,7 +23,7 @@ static int u_basename(struct Ustr **ps1)
   if (!llen)
   {
     off  = ustr_spn_chr_rev(*ps1, off, '/');
-    llen = u_cspn_chr_rev(*ps1, off, '/');
+    llen = ustr_cspn_chr_rev(*ps1, off, '/');
   }
 
   if (!llen)

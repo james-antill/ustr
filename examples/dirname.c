@@ -10,17 +10,6 @@ static void die(const char *prog_name, const char *msg)
   exit (EXIT_FAILURE);
 }
 
-/* 1.0.3 is buggy */
-size_t u_cspn_chr_rev(const struct Ustr *s1, size_t off, char chr)
-{
-  size_t f_pos = ustr_srch_chr_rev(s1, off, chr);
-
-  if (!f_pos)
-    return (ustr_len(s1) - off);
-    
-  return ((ustr_len(s1) - f_pos) - off);
-}
-
 static struct Ustr *u_dirname(const struct Ustr *s2)
 {
   size_t off  = 0;
@@ -33,7 +22,7 @@ static struct Ustr *u_dirname(const struct Ustr *s2)
   if (len == off)
     return (USTR1(\1, "/"));
 
-  off += u_cspn_chr_rev(s2, off, '/');
+  off += ustr_cspn_chr_rev(s2, off, '/');
   if (len == off)
     return (USTR1(\1, "."));
 
